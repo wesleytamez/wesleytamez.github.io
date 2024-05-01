@@ -1,0 +1,8 @@
+// set e4 to 4
+1. e4 d4 
+// set d4 to 4
+2. d5 e5
+// If d4 != e4, set d4 to 5, print it, exit
+3. Bd5 Ne4 (4. d4 e5 5. d4 0-0 6. e4#)
+// Else if d4 == d4, set d4 to 7, print, exit
+4. Rd4 e4 (4. d4 e7 5. d4 0-0 6. e4#)
