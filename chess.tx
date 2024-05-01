@@ -1,0 +1,39 @@
+Program:
+	statements*=Statement;
+Statement:
+	Assignment | Add | Subtract | Divide | Multiply | Mod | Print | PrintLetter | If | IfElse | ElseIf | Stop | While | WhileNot;
+Assignment:
+	moveNum=FLOAT var1=/([a-h][1-9])/ var2=/([a-h][1-9])/;
+Add:
+	moveNum=FLOAT var1=/([a-h][1-9]x[a-h][1-9])/ var2=/([a-h][1-9])/;
+Subtract:
+	moveNum=FLOAT var1=/([B][a-h][1-9]x[a-h][1-9])/ var2=/([a-h][1-9])/;
+Divide:
+	moveNum=FLOAT var1=/([N][a-h][1-9]x[a-h][1-9])/ var2=/([a-h][1-9])/;
+Multiply:
+	moveNum=FLOAT var1=/([R][a-h][1-9]x[a-h][1-9])/ var2=/([a-h][1-9])/;
+Mod:
+	moveNum=FLOAT var1=/([K][a-h][1-9]x[a-h][1-9])/ var2=/([a-h][1-9])/;
+Print:
+	moveNum=FLOAT var1=/([a-h][1-9])/ var2='0-0';
+PrintLetter:
+	moveNum=FLOAT var1=/([a-h][1-9])/ var2='O-O';
+If:
+	(IfEqual | IfNotEqual);
+IfEqual:
+	moveNum=FLOAT var1=/([B][a-h][1-9])/ var2=/([a-h][1-9])/ p1='(' newProgram=Program p2=')';
+IfNotEqual:
+	moveNum=FLOAT var1=/([B][a-h][1-9])/ var2=/([N][a-h][1-9])/ p1='(' newProgram=Program p2=')';
+IfElse:
+	moveNum=FLOAT var1=/([N][a-h][1-9])/ var2=/([a-h][1-9])/ p1='(' newProgram=Program p2=')';
+ElseIf:
+	moveNum=FLOAT var1=/([R][a-h][1-9])/ var2=/([a-h][1-9])/ p1='(' newProgram=Program p2=')';
+While:
+	moveNum=FLOAT var1=/([K][a-h][1-9])/ var2=/([a-h][1-9])/ p1='(' newProgram=Program p2=')';
+WhileNot:
+	moveNum=FLOAT var1=/([K][a-h][1-9])/ var2=/([N][a-h][1-9])/ p1='(' newProgram=Program p2=')';
+Stop:
+	moveNum=FLOAT var1=/([a-h][1-9][#])/;
+Comment:
+  /\/\/.*$/
+;
